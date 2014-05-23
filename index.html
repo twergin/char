@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style.css">
+    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dungeons and Dragons Character Sheet</title>
+</head>
+
+<body>
+
+    <div id="header">
+
+        <img src="imgs/logo.png">
+        <h1>CHARACTER SHEET</h1>
+
+    </div>
+
+    <div class="container">
+
+        <div id="info">
+
+            <div class="column half">
+            <h3>
+            <label>Name: <br> <input id="name" class="char" type="text" size="30" maxlength="30" value=""></label><br>
+                <label>Race: <br> <input id="race" class="char" type="text" size="20" maxlength="25" value=""></label><br>
+                <label>Class: <br> <input id="charClass" class="char" type="text" size="15" maxlength="25" value=""></label><br>
+                <label>Sex: <br> <input id="sex" class="char" type="text" size="7" maxlength="7" value=""></label></h3></div>
+                
+				<div class="column half">
+               <h3><label>Height: <br>  <input id="height" class="char" type="text" size="7" maxlength="8" value=""></label><br>
+                <label>Weight: <br>  <input id="weight" class="char" type="text" size="7" maxlength="10" value=""></label><br>
+                <label>Level: <br>  <input id="level" class="char" type="text" size="4" maxlength="3" value=""></label><br>
+                <label>XP: <br>  <input id="xp" class="char" type="text" size="15" maxlength="15" value=""></label></h3>
+                </div>
+
+                <h3><label>Proficiencies: <br> <textarea id="proficiencies" rows="5" cols="30"></textarea></label></p></label></h3>
+                <button id="save" class="but" onclick="save() ">Save</button>
+                <button id="load" class="but" onclick="load(); calc(str, 0, 'str', 'strmod'); calc(int, 0, 'int', 'intmod'); calc(wis, 0, 'wis', 'wismod');
+                calc(dex, 0, 'dex', 'dexmod'); calc(con, 0, 'con', 'conmod'); calc(cha, 0, 'cha', 'chamod') ">Load</button>
+
+
+
+
+        </div>
+
+        <div id="abilities" class="column third">
+
+            <h2>Abilities</h2>
+            <p><label>STR:  <input id="str" onkeyup="calc(str, 0, 'str', 'strmod') " class="ab" type="text" size="2" maxlength="3" value=""><span id="strmod">  Mod: +0</span></label></p>
+            <p><label>INT:  <input id="int" onkeyup="calc(int, 0, 'int', 'intmod') " class="ab" type="text" size="2" maxlength="3" value=""><span id="intmod">  Mod: +0</span></label></p>
+            <p><label>WIS:  <input id="wis" onkeyup="calc(wis, 0, 'wis', 'wismod') " class="ab" type="text" size="2" maxlength="3" value=""><span id="wismod">  Mod: +0</span></label></p>
+            <p><label>DEX:  <input id="dex" onkeyup="calc(dex, 0, 'dex', 'dexmod') " class="ab" type="text" size="2" maxlength="3" value=""><span id="dexmod">  Mod: +0</span></label></p>
+            <p><label>CON:  <input id="con" onkeyup="calc(con, 0, 'con', 'conmod') " class="ab" type="text" size="2" maxlength="3" value=""><span id="conmod">  Mod: +0</span></label></p>
+            <p><label>CHA:  <input id="cha" onkeyup="calc(cha, 0, 'cha', 'chamod') " class="ab" type="text" size="2" maxlength="3" value=""><span id="chamod">  Mod: +0</span></label></p>
+
+        </div>
+
+        <div id="points" class="column third">
+
+            <h2>Info</h2>
+            <div class="stats"><h3><label>HP:</label></h3><h3><input id="hp" type="text" size="16" maxlength="16" value=""></h3></div>
+            <div class="stats"><h3><label>AC:</label></h3><h3><input id="ac" type="text" size="16" maxlength="16" value=""></h3></div>
+            <div class="stats"><h3><label>Gold:</label></h3><h3><input id="gold" type="text" size="13" maxlength="13" value=""></h3></div>
+            <div class="stats"><h3><label>+ to attack:</label></h3><h3><input id="attack" type="text" size="5" maxlength="5" value=""></h3></div>
+            <div class="stats"><h3><label>+ to damage:</label></h3><h3><input id="plustohit" type="text" size="4" maxlength="4" value=""></h3></div>
+
+        </div>
+
+        <div id="weapons" class="column third">
+
+            <h2>Weapons</h2>
+            <p><label>Weapon:<br> <input id="weapon1" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage:<br> <input id="damage1" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="side1" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="weapon1attack" class="but" onclick="roll('damage1', 'side1', 'weapon1result', total1, 'totalElement1') ">Attack</button>
+                <span id="weapon1result">Result: </span><span id="totalElement1" class="totals">Total: </span></p>
+            <p class="noteinfo"><label>Notes <input id="notes1" class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Weapon: <br><input id="weapon2" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="damage2" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="side2" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="weapon2attack" class="but" onclick="roll('damage2', 'side2', 'weapon2result', total2, 'totalElement2') ">Attack</button><br>
+                <span id="weapon2result">Result: </span><span id="totalElement2" class="totals">Total: </span></p>
+            <p class="noteinfo"><label>Notes <input id="notes2" class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Weapon: <br><input id="weapon3" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="damage3" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="side3" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="weapon3attack" class="but" onclick="roll('damage3', 'side3', 'weapon3result', total3, 'totalElement3') ">Attack</button><br>
+                <span id="weapon3result">Result: </span><span id="totalElement3" class="totals">Total: </span></p>
+            <p class="noteinfo"><label>Notes <input id="notes3" class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+        </div>
+
+        <div id="perday" class="column third">
+
+            <h2>Spells</h2>
+            <p><label>Spell: <br><input id="spell1" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam1" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside1" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell1attack" class="but" onclick="roll('spelldam1', 'spellside1', 'spell1result', total4, 'spelltotal1'); findLevel('sp1level', 'sp1uses', 'spell1result', 'spelltotal1'); perDay('sp1uses');  ">Cast</button>
+                <span id="spell1result">Result: </span><span id="spelltotal1" class="totals">Total: </span></p>
+            <label>Level: <br><input id="sp1level" onkeyup="findLevel('sp1level', 'sp1uses', 'spell1result', 'spelltotal1') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left: <br><input id="sp1uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <br><input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Spell: <br><input id="spell2" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam2" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside2" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell2attack" class="but" onclick="roll('spelldam2', 'spellside2', 'spell2result', total4, 'spelltotal2'); findLevel('sp2level', 'sp2uses', 'spell2result', 'spelltotal2'); perDay('sp2uses'); ">Cast</button>
+                <span id="spell2result">Result: </span><span id="spelltotal2" class="totals">Total: </span></p>
+            <label>Level: <br><input id="sp2level" onkeyup="findLevel('sp2level', 'sp2uses', 'spell2result', 'spelltotal2') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left: <br><input id="sp2uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <br><input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Spell: <br><input id="spell3" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam3" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside3" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell3attack" class="but" onclick="roll('spelldam3', 'spellside3', 'spell3result', total4, 'spelltotal3'); findLevel('sp3level', 'sp3uses', 'spell3result', 'spelltotal3'); perDay('sp3uses'); ">Cast</button>
+                <span id="spell3result">Result: </span><span id="spelltotal3" class="totals">Total: </span></p><br>
+            <label>Level: <br><input id="sp3level" onkeyup="findLevel('sp3level', 'sp3uses', 'spell3result', 'spelltotal3') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left: <br><input id="sp3uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <br><input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Spell: <br><input id="spell4" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam4" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside4" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell4attack" class="but" onclick="roll('spelldam4', 'spellside4', 'spell4result', total4, 'spelltotal4'); findLevel('sp4level', 'sp4uses', 'spell4result', 'spelltotal4'); perDay('sp4uses'); ">Cast</button>
+                <span id="spell4result">Result: </span><span id="spelltotal4" class="totals">Total: </span></p>
+            <label>Level: <br><input id="sp4level" onkeyup="findLevel('sp4level', 'sp4uses', 'spell4result', 'spelltotal4') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left:<br> <input id="sp4uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <br><input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Spell: <br><input id="spell5" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam5" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside5" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell5attack" class="but" onclick="roll('spelldam5', 'spellside5', 'spell5result', total4, 'spelltotal5'); findLevel('sp5level', 'sp5uses', 'spell5result', 'spelltotal5'); perDay('sp5uses'); ">Cast</button>
+                <span id="spell5result">Result: </span><span id="spelltotal5" class="totals">Total: </span></p>
+            <label>Level: <br><input id="sp5level" onkeyup="findLevel('sp5level', 'sp5uses', 'spell5result', 'spelltotal5') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left: <br><input id="sp5uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <br><input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Spell:<br> <input id="spell6" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam6" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside6" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell6attack" class="but" onclick="roll('spelldam6', 'spellside6', 'spell6result', total4, 'spelltotal6'); findLevel('sp6level', 'sp6uses', 'spell6result', 'spelltotal6'); perDay('sp6uses'); ">Cast</button>
+                <span id="spell6result">Result: </span><span id="spelltotal6" class="totals">Total: </span></p>
+            <label>Level:<br> <input id="sp6level" onkeyup="findLevel('sp6level', 'sp6uses', 'spell6result', 'spelltotal6') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left: <br><input id="sp6uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <br><input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Spell: <br><input id="spell7" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam7" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside7" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell7attack" class="but" onclick="roll('spelldam7', 'spellside7', 'spell7result', total4, 'spelltotal7'); findLevel('sp7level', 'sp7uses', 'spell7result', 'spelltotal7'); perDay('sp7uses'); ">Cast</button>
+                <span id="spell7result">Result: </span><span id="spelltotal7" class="totals">Total: </span></p>
+            <label>Level: <br><input id="sp7level" onkeyup="findLevel('sp7level', 'sp7uses', 'spell7result', 'spelltotal7') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left: <br><input id="sp7uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <br><input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+            <p><label>Spell: <br><input id="spell8" type="text" size="15" maxlength="15" value=""></label><br>
+                <label>Damage: <br><input id="spelldam8" type="text" size="3" maxlength="3" value="1"></label><br>
+                <label><b>D</b><br><input id="spellside8" type="text" size="3" maxlength="3" value="6"></label><br>
+                <button id="spell8attack" class="but" onclick="roll('spelldam8', 'spellside8', 'spell8result', total4, 'spelltotal8'); findLevel('sp8level', 'sp8uses', 'spell8result', 'spelltotal8'); perDay('sp8uses'); ">Cast</button>
+                <span id="spell8result">Result: </span><span id="spelltotal8" class="totals">Total: </span></p>
+            <label>Level: <br><input id="sp8level" onkeyup="findLevel('sp8level', 'sp8uses', 'spell8result', 'spelltotal8') " type="text" size="4" maxlength="4" value=""></label><br>
+            <label>Uses left: <br><input id="sp8uses" class="level" type="text" size="4" maxlength="4" value=""></label><br>
+            <p class="noteinfo"><label>Notes <input class="notes" type="text" size="40" maxlength="40" value=""></label></p>
+
+        </div>
+
+
+
+        <div id="items" class="column third">
+
+            <h2>Items</h2>
+            <p class="stuff"><label>Item <input id="item1" type="text" align="right" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="desc1" rows="5" cols="15"></textarea></label></p>
+            <p><label>Item <input id="item2" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="desc2" rows="5" cols="15"></textarea></label></p>
+            <p><label>Item <input id="item3" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="desc3" rows="5" cols="15"></textarea></label></p>
+            <p><label>Item <input id="item4" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="desc4" rows="5" cols="15"></textarea></label></p>
+            <p><label>Item <input id="item5" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="desc5" rows="5" cols="15"></textarea></label></p>
+
+        </div>
+
+        <div id="skills" class="column third">
+
+            <h2>Skills & Passive Abilities</h2>
+            <p class="stuff"><label>Skill <input id="skill1" type="text" align="right" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="tion1" rows="5" cols="15"></textarea></label></p>
+            <p><label>Skill <input id="skill2" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="tion2" rows="5" cols="15"></textarea></label></p>
+            <p><label>Skill <input id="skill3" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="tion3" rows="5" cols="15"></textarea></label></p>
+            <p><label>Skill <input id="skill4" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="tion4" rows="5" cols="15"></textarea></label></p>
+            <p><label>Skill <input id="skill5" class="stuff" type="text" size="15" maxlength="40" value=""></label></p>
+            <p class="desc"><label>Description <textarea id="tion5" rows="5" cols="15"></textarea></label></p>
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <script type="text/javascript" src="char.js"></script>
+</body>
+</html>
